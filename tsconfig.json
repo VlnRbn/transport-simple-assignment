@@ -17,6 +17,14 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "travel-track": [
+        "dist/travel-track"
+      ],
+      "travel-track/*": [
+        "dist/travel-track/*"
+      ]
+    }
   }
 }

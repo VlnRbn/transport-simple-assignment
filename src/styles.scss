@@ -1,1 +1,33 @@
 /* You can add global styles to this file, and also import other style files */
+
+.mh-10{
+    margin: 0 10px;
+}
+
+
+.h-full{
+    height: 100%
+}
+
+.is-borderless{
+    border: none;
+}
+
+
+//Forms
+.control.has-icons-left .input{
+    padding-left: 80px
+}
+
+.box.ng-invalid {
+    border: 1px solid #fb4860;
+    
+    span.icon{
+        color: #fb4860
+    }
+}
+
+//cards
+.card-footer-padding{
+    padding: 0.75rem;
+}

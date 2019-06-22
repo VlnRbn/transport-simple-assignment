@@ -1,20 +1,88 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<main class="container is-fluid">
+    <div
+    class="box   notification is-warning is-marginless"
+  >
+    <strong> Instructions </strong><br />
+    All inputs must have &nbsp;<strong> atleast 3 characters</strong>
+    <br />
+    Origin and destination &nbsp;<strong>cannot be same</strong>
+    <br />
+  </div>
+  <section class="section is-paddingless">
+    <h2 class="subtitle">
+    </h2>
+    <lib-travel-track [tripInputs]="tripInputs"></lib-travel-track>
+  </section>
 
+  <section class="section">
+    <h4 class="title is-5 is-clearfix">
+      List trips here
+      <a class="button is-primary is-pulled-right" (click)="addTrip()">Add</a>
+    </h4>
+    <ng-container *ngFor="let address of tripForm.controls; let i = index">
+      <div class="box  columns is-paddingless is-marginless" [formGroup]="getTripForm(i)">
+        <div class="field column is-marginless">
+          <p class="control has-icons-left">
+            <span class="icon is-small is-left mh-10">
+              From:
+            </span>
+            <input
+              class="input   is-primary is-static"
+              type="text"
+              formControlName="start"
+              placeholder="Enter Origin location name"
+            />
+          </p>
+        </div>
+        <div class="field column is-marginless">
+          <p class="control has-icons-left">
+            <span class="icon is-small is-left mh-10">
+              To:
+            </span>
+            <input
+              class="input  is-primary is-static "
+              type="text"
+              formControlName="destination"
+              placeholder="Enter destination location name"
+            />
+          </p>
+        </div>
+        <footer class="card-footer is-borderless card-footer-padding">
+          <a class="button is-danger" (click)="removeTrip(i)">Delete</a>
+        </footer>
+      </div>
+    </ng-container>
+
+    <!-- <div class="box  columns is-paddingless">
+      <div class="field column is-marginless">
+        <p class="control has-icons-left">
+          <span class="icon is-small is-left mh-10">
+            From:
+          </span>
+          <input
+            class="input   is-primary is-static"
+            type="text"
+            placeholder="Enter Origin location name"
+            value="bangalore"
+          />
+        </p>
+      </div>
+      <div class="field column is-marginless">
+        <p class="control has-icons-left">
+          <span class="icon is-small is-left mh-10">
+            To:
+          </span>
+          <input
+            class="input  is-primary is-static "
+            type="text"
+            placeholder="Enter destination location name"
+            value="bangalore"
+          />
+        </p>
+      </div>
+      <footer class="card-footer is-borderless card-footer-padding">
+        <a class="button is-danger">Delete</a>
+      </footer>
+    </div> -->
+  </section>
+</main>

@@ -1,0 +1,120 @@
+<ng-container *ngFor="let item of trips">
+  <!-- {{ item.line }} -- eleveted : {{ item.elevated }} -->
+
+  <!-- "simpleLine" | "arrowLine" | "splineUp" | "splineDown" | "endNode" -->
+  <span [ngSwitch]="item.line">
+    <ng-container *ngSwitchCase="'simpleLine'">
+      <ng-container *ngIf="!item.elevated; else elevated">
+        <svg height="220" width="200">
+          <circle
+            class="ad-Point"
+            cx="8"
+            cy="180"
+            r="6"
+            stroke="#00E676"
+          ></circle>
+          <path class="ad-Path" d="M  20 180 L 200 180  "></path>
+          <text class="location-name" x="0" y="200" >{{item.start | uppercase  | slice : 0 : 3}}</text>
+          <text class="location-name" x="0" y="212" >{{item.destination | uppercase  | slice : 0 : 3}}</text>
+        </svg>
+      </ng-container>
+      <ng-template #elevated>
+        <svg height="220" width="200">
+          <circle
+            class="ad-Point"
+            cx="8"
+            cy="20"
+            r="6"
+            stroke="#00E676"
+          ></circle>
+          <path class="ad-Path" d="M  20 20 L 200 20  "></path>
+
+          <text class="location-name" x="0" y="40" >{{item.start | uppercase  | slice : 0 : 3}}</text>
+          <text class="location-name" x="0" y="52" >{{item.destination | uppercase  | slice : 0 : 3}}</text>
+          Sorry, your browser does not support inline SVG.
+        </svg>
+      </ng-template>
+    </ng-container>
+    <ng-container *ngSwitchCase="'arrowLine'">
+      <svg height="220" width="200">
+        <circle
+          class="ad-Point"
+          cx="8"
+          cy="180"
+          r="6"
+          stroke="#00E676"
+        ></circle>
+        <path class="ad-Path" d="M  20 180 L 200 180  "></path>
+
+        <text class="location-name" x="0" y="200" >{{item.start | uppercase  | slice : 0 : 3}}</text>
+        <text class="location-name" x="0" y="212" >{{item.destination | uppercase  | slice : 0 : 3}}</text>
+        <polygon points="190,170 190,190 200,180" class="triangle" />
+        Sorry, your browser does not support inline SVG.
+      </svg>
+    </ng-container>
+    <ng-container *ngSwitchCase="'splineUp'">
+      <svg height="220" width="100">
+        <circle
+          class="ad-Point"
+          cx="8"
+          cy="180"
+          r="6"
+          stroke="#00E676"
+        ></circle>
+        <path
+          class="ad-Path"
+          d="M 20 180 Q 60 180 60 100 Q 60 20 100 20 "
+        ></path>
+
+        <text class="location-name" x="0" y="200" >{{item.start | uppercase  | slice : 0 : 3}}</text>
+        <text class="location-name" x="0" y="212" >{{item.destination | uppercase  | slice : 0 : 3}}</text>
+        Sorry, your browser does not support inline SVG.
+      </svg>
+    </ng-container>
+
+    <ng-container *ngSwitchCase="'splineDown'">
+      <svg height="220" width="100">
+        <circle class="ad-Point" cx="8" cy="20" r="6" stroke="#00E676"></circle>
+        <path
+          class="ad-Path"
+          d="M 20 20 Q 60 20 60 100 Q 60 180 100 180"
+        ></path>
+
+        <text class="location-name" x="0" y="40" >{{item.start | uppercase  | slice : 0 : 3}}</text>
+        <text class="location-name" x="0" y="52" >{{item.destination | uppercase  | slice : 0 : 3}}</text>
+        Sorry, your browser does not support inline SVG.
+      </svg>
+    </ng-container>
+
+    <ng-container *ngSwitchCase="'endNode'">
+      <ng-container *ngIf="item.elevated; else elevated">
+        <svg height="220" width="20">
+          <circle
+            class="ad-Point"
+            cx="8"
+            cy="20"
+            r="6"
+            stroke="#00E676"
+          ></circle>
+
+          <text class="location-name" x="0" y="40" >{{item.start | uppercase  | slice : 0 : 3}}</text>
+          <text class="location-name" x="0" y="52" >{{item.destination | uppercase  | slice : 0 : 3}}</text>
+        </svg>
+      </ng-container>
+      <ng-template #elevated>
+        <svg height="220" width="20">
+          <circle
+            class="ad-Point"
+            cx="8"
+            cy="180"
+            r="6"
+            stroke="#00E676"
+          ></circle>
+
+          <text class="location-name" x="0" y="200" >{{item.start | uppercase  | slice : 0 : 3}}</text>
+          <text class="location-name" x="0" y="212" >{{item.destination | uppercase  | slice : 0 : 3}}</text>
+        </svg>
+      </ng-template>
+    </ng-container>
+  </span>
+</ng-container>
