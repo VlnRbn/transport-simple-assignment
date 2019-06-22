@@ -8,11 +8,12 @@ import { TravelTrackService } from "./travel-track.service";
   styles: [
     `
       :host {
-        display: block;
+        display: flex;
         height: 250px;
+        overflow-x: auto;
         padding-left: 20px;
+        padding-right: 20px;
         background: #f5f5f5;
-
       }
       circle {
         stroke: #00E676;
